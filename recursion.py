@@ -39,6 +39,8 @@ def inorder(arb):
         return '('+inorder(arb.left)+' '+arb.label+' '+inorder(arb.right)+' '+')'
     else:
         return "Rotulo incorrecto"
+
+    #Este metodo retorna una lista de diccionarios con todos los valores de verdad posibles para cada letra
 def interpretaciones():
     aux= {}
     interps= []
@@ -85,12 +87,13 @@ def valor(arb,interpretaciones):
             return 'V'
         else:
             return 'F'      
+    #Este metodo imprime si dos formulas son equivalentes o no lo son
 def equivalencia(arb1,arb2):
     for i in interpretaciones():
         if valor(arb1,i)!=valor(arb2,i):
             return "%s  VS  %s  No son Equivalentes" %(inorder(arb1),inorder(arb2))
     return "%s  VS  %s  Son Equivalentes" %(inorder(arb1),inorder(arb2))
-
+#Este metodo imprime todas las posibles opciones para que una formula sea verdadera
 def valoresverdaderos(arb1):
     print "%s es verdadero para:\n" %(inorder(arb1))
     for i in interpretaciones():
@@ -189,4 +192,4 @@ A8 = Tree('-',None,A7)#-(p>q)
 A9 = Tree('>',A8,A6)#-(p>q) > r O s
 A10=Tree('Y',A9,A5)# (-(p>q) > r O s) Y t
 valoresverdaderos(A10)
-#creadas las formulas de ambos puntos y el metodo para el segundo punto
+

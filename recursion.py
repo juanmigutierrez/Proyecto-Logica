@@ -1,3 +1,7 @@
+letrasProposicionales=['p','q','r','s','t']
+conectivosBinarios=['Y','O','>','<>']
+negacion=['-']
+
 class Tree(object):
     def __init__(self,l,iz,der):
         self.left=iz
@@ -87,7 +91,13 @@ def equivalencia(arb1,arb2):
             return "%s  VS  %s  No son Equivalentes" %(inorder(arb1),inorder(arb2))
     return "%s  VS  %s  Son Equivalentes" %(inorder(arb1),inorder(arb2))
 
+def valoresverdaderos(arb1):
+    print "%s es verdadero para:\n" %(inorder(arb1))
+    for i in interpretaciones():
 
+        if valor(arb1,i)== 'V':
+            print i
+            
 #imprime las posibles interpretaciones
 print "Interpretaciones posibles:"
 for i in interpretaciones():
@@ -102,4 +112,81 @@ print ' ejemplo si funciona problema'
 print equivalencia(A1,A2)
 print equivalencia(A1,A3)
 
+#punto 4
+#a)
+#Arbol1 
+A1 = Tree('r',None,None)
+A2 = Tree('q',None,None)
+A3 = Tree('p',None,None)
+A4 = Tree('O',A2,A1)
+A5 = Tree('Y',A3,A4)
+#Arbol2
+B1 = Tree('r',None,None)
+B2 = Tree('q',None,None)
+B3 = Tree('p',None,None)
+B4 = Tree('Y',B3,B1)
+B5 = Tree('Y',B3,B2)
+B6 = Tree('O',B4,B5)
+print'------'
+print 'punto a'
 
+print equivalencia(A5,B6)
+#a)
+#Arbol1
+A1 = Tree('p',None,None)
+A2 = Tree('q',None,None)
+A3 = Tree('O',A1,A2)
+#Arbol2
+A4 = Tree('-',None,A1)
+A5 = Tree('-',None,A2)
+A6 = Tree('Y',A5,A4)
+A7 = Tree('-',A5,A6)
+
+
+print'------'
+print 'punto b'
+
+print equivalencia(A3,A7)
+
+#c)
+#Arbol1
+A1 = Tree('p',None,None)
+A2 = Tree('q',None,None)
+A3 = Tree('Y',A1,A2)
+#Arbol2
+A4 = Tree('-',None,A1)
+A5 = Tree('-',None,A2)
+A6 = Tree('O',A5,A4)
+A7 = Tree('-',None,A6)
+print'------'
+print 'punto c'
+print equivalencia(A3,A7)
+
+print'------'
+print 'punto d'
+#arbol1
+A1 = Tree('p',None,None)
+A2 = Tree('q',None,None)
+A3 = Tree('>',A1,A2)
+
+#arbol 2
+A4 = Tree('-',None,A1)
+A6 = Tree('O',A4,A2)
+
+print equivalencia(A3,A6)
+print '-------------------'
+print"Punto 2: \n"
+#siguiente punto del taller
+#arbol:
+A1 = Tree('p',None,None)
+A2 = Tree('q',None,None)
+A3 = Tree('r',None,None)
+A4 = Tree('s',None,None)
+A5 = Tree('t',None,None)
+A6 = Tree('O',A3,A4)#r O s
+A7 = Tree('>',A1,A2)#p > q
+A8 = Tree('-',None,A7)#-(p>q)
+A9 = Tree('>',A8,A6)#-(p>q) > r O s
+A10=Tree('Y',A9,A5)# (-(p>q) > r O s) Y t
+valoresverdaderos(A10)
+#creadas las formulas de ambos puntos y el metodo para el segundo punto

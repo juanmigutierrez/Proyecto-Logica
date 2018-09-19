@@ -1,31 +1,32 @@
 import pygame
-import time
-
+#import time
 #Utilizamos Pygame que es una libreria para hacer videojuegos, en esta libreria es posible tambien graficar y no necesariamente Tener que crear un juego.
 
-def ChessBoard(n): # n es el numero de cuadros x cuadros , EJEMPLO  si n = 4, es un tablero 4x4
+width = 480
+height = 480
+color_cell = [(253, 235, 208), (214, 137, 16)]
+board_size =4
+square_size =width/board_size
 
+def ChessBoard(): # n es el numero de cuadros x cuadros , EJEMPLO  si n = 4, es un tablero 4x4
     pygame.init()
-    colores = [(253, 235, 208), (214, 137, 16)]    # Esta en codigo RGB aca ponemos los codigos de naranja claro y naranja-cafe
-    Pixeles = 480           # Pixeles * Pixeles
-    lcuadrado = Pixeles // n    # Largo de cada cuadrado del ChessBoard , esta division es entera ejemplo 5//2 = 2
-    Pixeles = n * lcuadrado     # Ajusta para meter los cuadrados bien, en esencia deberia ser igual a 480
-
-    # Crea el programa con (altura,ancho) con su respectiva ventana
-    surface = pygame.display.set_mode((Pixeles, Pixeles))
-
-    for fil in range(n):           # Dibuja cada fila en el ChessBoard
-            c_indx = fil % 2           # Alterna de color
-            for col in range(n):       # Va pasando por las columnas
-                cuadrado = (col*lcuadrado, fil*lcuadrado ,lcuadrado, lcuadrado)
-                surface.fill(colores[c_indx], cuadrado)
-                # Cambia el color para el proximo cuadrado
-                c_indx = (c_indx + 1) % 2
-    pygame.display.flip()
-    os.system("pause")
-    pygame.quit()
     
+    #se crea la ventana 480 Pixels de alto,480 Pixels de ancho
+    surface = pygame.display.set_mode((width, height))
+    pygame.display.set_caption("Problema Reinas Miguel Vidal y David Martinez")
+    
+    #se crea el tablero
+    for filas in range(board_size):           # Dibuja cada fila en el ChessBoard
+        c_indx = filas % 2           # Alterna de color
+        for columnas in range(board_size):       # Va pasando por las columnas
+              cuadrado = (columnas*square_size, filas*square_size ,square_size, square_size)
+              surface.fill(color_cell[c_indx], cuadrado)
+              c_indx = (c_indx + 1) % 2
+    pygame.display.flip()
+    #os.system("pause")
+    while True:
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                quit()
 
-
-ChessBoard(4) 
-
+ChessBoard() 

@@ -1,5 +1,4 @@
 import pygame
-
 #Utilizamos Pygame que es una libreria para hacer videojuegos, en esta libreria es posible tambien graficar y no necesariamente Tener que crear un juego.
 
 width = 480
@@ -8,10 +7,9 @@ color_cell = [(253, 235, 208), (214, 137, 16)]
 board_size =4
 square_size =width/board_size
 
-
 def ChessBoard(r1,r2,r3,r4): # n es el numero de cuadros x cuadros , EJEMPLO  si n = 4, es un tablero 4x4
     pygame.init()
-    
+    Salir=False
     #se crea la ventana 480 Pixels de alto,480 Pixels de ancho
     board = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Problema Reinas Miguel Vidal y David Martinez")
@@ -34,42 +32,22 @@ def ChessBoard(r1,r2,r3,r4): # n es el numero de cuadros x cuadros , EJEMPLO  si
     board.blit(reina_blanca,inttocoord(r4))
         
     pygame.display.flip()
-    while True:
+    while not Salir:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
-                quit()
+                pygame.quit()
+                print "Gracias por jugar"
+                Salir=True
 
 def inttocoord(n):
-    if n==1:
-        return (10,10)
-    elif n==2:
-        return (square_size+10,10)
-    elif n==3:
-        return ((square_size*2)+10,10)
-    elif n==4:
-        return ((square_size*3)+10,10)
-    elif n==5:
-        return ((square_size*0)+10,(square_size*1)+10)
-    elif n==6:
-        return ((square_size*1)+10,(square_size*1)+10)
-    elif n==7:
-        return ((square_size*2)+10,(square_size*1)+10)
-    elif n==8:
-        return ((square_size*3)+10,(square_size*1)+10)
-    elif n==9:
-        return ((square_size*0)+10,(square_size*2)+10)
-    elif n==10:
-        return ((square_size*1)+10,(square_size*2)+10)
-    elif n==11:
-        return ((square_size*2)+10,(square_size*2)+10)
-    elif n==12:
-        return ((square_size*3)+10,(square_size*2)+10)
-    elif n==13:
-        return ((square_size*0)+10,(square_size*3)+10)
-    elif n==14:
-        return ((square_size*1)+10,(square_size*3)+10)
-    elif n==15:
-        return ((square_size*2)+10,(square_size*3)+10)
+    if 1<=n and n<=4:
+        return ((square_size*(n-1))+10,10)
+    elif 5<=n and n<=8:
+        return ((square_size*(n-5))+10,square_size+10)
+    elif 9<=n and n<=12:
+        return ((square_size*(n-9))+10,(square_size*2)+10)
+    elif 13<=n and n<=16:
+        return ((square_size*(n-13))+10,(square_size*3)+10)
     else:
         return ((square_size*3)+10,(square_size*3)+10)
-ChessBoard(5,9,7,1) 
+ChessBoard(17,1,2,3) 

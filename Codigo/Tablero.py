@@ -4,17 +4,17 @@ import time
 import random
 #Utilizamos Pygame que es una libreria para hacer videojuegos, en esta libreria es posible tambien graficar y no necesariamente Tener que crear un juego.
 
-#Clase Reina que guarda su posición
+#Clase Reina que guarda su posiciÃ³n
 class Reina:
     def __init__(self):
         self.pos=(-120,-120)
 
-#El tablero se creó previamente con estos parametros y pygame pero se importo la imagen por cuestiones de rendimiento
+#El tablero se creÃ³ previamente con estos parametros y pygame pero se importo la imagen por cuestiones de rendimiento
 width = 480 # Ancho del tablero == height (Alto) ya que es un tablero cuadrado
-board_size =4 #Tamaño del tablero en este caso 4x4
-square_size =width/board_size #Tamaño de cada cuadro(simetrico con el tamaño completo del tablero)
+board_size =4 #TamaÃ±o del tablero en este caso 4x4
+square_size =width/board_size #TamaÃ±o de cada cuadro(simetrico con el tamaÃ±o completo del tablero)
 
-#Creacion de las cuatro reinas(solo posición)
+#Creacion de las cuatro reinas(solo posiciÃ³n)
 reina1=Reina()
 reina2=Reina()
 reina3=Reina()
@@ -34,7 +34,7 @@ def inttocoord(n): #Metodo que convierte un entero n a coordenadas (x,y) en el t
         return ((square_size*3)+10,(square_size*3)+10)
 
 
-def ponerreinas(r1,r2,r3,r4): #Metodo que modifica la posición de las reinas
+def ponerreinas(r1,r2,r3,r4): #Metodo que modifica la posiciÃ³n de las reinas
     reina1.pos=inttocoord(r1)
     reina2.pos=inttocoord(r2)
     reina3.pos=inttocoord(r3)
@@ -52,12 +52,12 @@ def ChessBoard(): #Creacion del tablero
     board = pygame.display.set_mode((width,width))
     pygame.display.set_caption("Problema Reinas Miguel Vidal y David Martinez")
     
-    # Dirección de la imagen para que funcione en cualquier computador
+    # DirecciÃ³n de la imagen para que funcione en cualquier computador
     current_path = os.path.dirname('C:\Users\dmart\Desktop\Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     resource_path = os.path.join(current_path, 'Codigo')
 
     #Reinas (se carga la imagen)
-    reina=pygame.image.load(os.path.join(resource_path, "reina.png")).convert_alpha()
+    reina=pygame.image.load(os.path.join(resource_path, "reina2.png")).convert_alpha()
     reina=pygame.transform.scale(reina,(100,100)) # Se escalan las imagenes para que queden centradas en sus cuadrados
     table=pygame.image.load(os.path.join(resource_path, "tablero.PNG")).convert_alpha()
 
@@ -67,11 +67,11 @@ def ChessBoard(): #Creacion del tablero
         if flag: #Ubica las reinas en posiciones random(simulando posibles soluciones)
             ponerreinas(random.randint(1,16),random.randint(1,16),random.randint(1,16),random.randint(1,16))
             flag=False
-        else:  #Ubica a las reinas en la solución correcta
+        else:  #Ubica a las reinas en la soluciÃ³n correcta
             ponerreinas(3,5,12,14)
             flag=True
 
-        #Refresca la imagen(cuestiones de animación)
+        #Refresca la imagen(cuestiones de animaciÃ³n)
         board.blit(table,(0,0))
         if flag:
             board.blit(solucion,(15,(width/2)-25))

@@ -1,4 +1,5 @@
 import pygame
+import os
 #Utilizamos Pygame que es una libreria para hacer videojuegos, en esta libreria es posible tambien graficar y no necesariamente Tener que crear un juego.
 
 width = 480
@@ -14,8 +15,13 @@ def ChessBoard(r1,r2,r3,r4): # n es el numero de cuadros x cuadros , EJEMPLO  si
     board = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Problema Reinas Miguel Vidal y David Martinez")
     
+    # Direccion de la imagen para que funcione en cualquier computador
+    current_path = os.path.dirname('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
+    resource_path = os.path.join(current_path, 'Codigo')
+
     #Reinas
-    reina=pygame.image.load("reina.png").convert_alpha()
+    reina=pygame.image.load(os.path.join(resource_path, "reina2.png")).convert_alpha()
+    reina=pygame.transform.scale(reina,(100,100)) # Se escalan las imagenes para que queden centradas en sus cuadrados
     
     #se crea el tablero
     for filas in range(board_size):           # Dibuja cada fila en el ChessBoard
@@ -25,7 +31,7 @@ def ChessBoard(r1,r2,r3,r4): # n es el numero de cuadros x cuadros , EJEMPLO  si
               board.fill(color_cell[c_indx], cuadrado)
               c_indx = (c_indx + 1) % 2
    
-    board.blit(reina,inttocoord(r1))
+    board.blit(reina,inttocoord(r1)) # Codigo Que pone las reinas en su lugar
     board.blit(reina,inttocoord(r2))
     board.blit(reina,inttocoord(r3))
     board.blit(reina,inttocoord(r4))

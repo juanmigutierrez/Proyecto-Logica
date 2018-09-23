@@ -53,7 +53,7 @@ def ChessBoard(): #Creacion del tablero
     pygame.display.set_caption("Problema Reinas Miguel Vidal y David Martinez")
     
     # Dirección de la imagen para que funcione en cualquier computador
-    current_path = os.path.dirname('C:\Users\dmart\Desktop\Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
+    current_path = os.path.dirname('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     resource_path = os.path.join(current_path, 'Codigo')
 
     #Reinas (se carga la imagen)

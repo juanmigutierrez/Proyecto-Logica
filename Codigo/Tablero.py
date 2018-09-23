@@ -57,7 +57,7 @@ def ChessBoard(): #Creacion del tablero
     resource_path = os.path.join(current_path, 'Codigo')
 
     #Reinas (se carga la imagen)
-    reina=pygame.image.load(os.path.join(resource_path, "reina2.png")).convert_alpha()
+    reina=pygame.image.load(os.path.join(resource_path, "reina.png")).convert_alpha()
     reina=pygame.transform.scale(reina,(100,100)) # Se escalan las imagenes para que queden centradas en sus cuadrados
     table=pygame.image.load(os.path.join(resource_path, "tablero.PNG")).convert_alpha()
 

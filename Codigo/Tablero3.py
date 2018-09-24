@@ -93,18 +93,3 @@ while not Salir:
         if event.type==pygame.QUIT:
             pygame.quit()
             Salir=True
-
-
-
-
-
-
-# Codigo EXTRA POR SI LAS MOSCAS
-# Direccion de la imagen para que funcione en cualquier computador
-current_path = os.path.dirname('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
-resource_path = os.path.join(current_path, 'Codigo')
-
-#Reinas
-reina=pygame.image.load(os.path.join(resource_path, "reina.png")).convert_alpha()
-reina=pygame.transform.scale(reina,(120,120)) # Se escalan las imagenes para que queden centradas en sus cuadrados
-board.blit(reina,(240.0, 0.0, 120.0, 120.0))

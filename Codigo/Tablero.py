@@ -55,7 +55,7 @@ def pos_reina(lista,board,n):  # Codigo Basico sin nada
             board.blit(reina,poner_reina(int(reina1),board_size))
     pygame.display.update()
     pygame.time.delay(100)
-    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png')
+    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     return board
 
 def llenar(reina):
@@ -82,7 +82,7 @@ def pos_pos_reina(lista1,lista2,board,n):
             board.blit(reina,poner_reina(int(reina1),board_size))
     pygame.display.update()
     pygame.time.delay(100)
-    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png')
+    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     return board
    
 
@@ -99,7 +99,7 @@ Salir=False
 #board = pos_reina(lista1,board,1)
 #board = pos_pos_reina(lista1,lista2,board,2)
 
-with open('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tableros.csv') as csv_file:
+with open('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tableros.csv') as csv_file: #ADVERTENCIA : Aca va la direccion de Tableros.csv
     data = csv.reader(csv_file, delimiter=',')
     contador = 1
     for l in data:

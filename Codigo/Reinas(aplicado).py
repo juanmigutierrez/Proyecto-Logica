@@ -7,7 +7,7 @@ print ("Importando paquetes...")
 from timeit import default_timer as timer
 import sys
 sys.path.insert(0, 'C:/Users/Recup/OneDrive/Documentos/Logica/Proyecto-Logica/Codigo/Tableaux.py')
-import Tableaux as Tab
+import Tableaux as T
 print ("Importados!")
 # Guardo el tiempo al comenzar el procedimiento
 start = timer()
@@ -36,7 +36,7 @@ for p in letrasProposicionales:
         for r in aux2:
             aux3 = [x for x in aux2 if x != r]
             for s in aux3:
-                literal = s + r + q + p + 'Y' + 'Y'+'Y'
+                literal = s + r + q + p + 'Y' +'Y'+'Y'
                 aux4 = [x + '-' for x in aux3 if x != r]
                 for k in aux4:
                     literal = k + literal + 'Y'
@@ -69,10 +69,42 @@ conjunciones = '3-5-7-10-11-12-13-14-16-YYYYYYYY15>' + conjunciones + 'Y'
 conjunciones = '1-4-6-8-11-12-13-14-15-YYYYYYYY16>' + conjunciones + 'Y'
 
 # Creo la formula como objeto
-A = T.StringtoTree(conjunciones, letrasProposicionales)
-print ("Formula: ", T.Inorder(A))
+A1 = T.StringtoTree('2-3-4-5-6-9-11-13-16-YYYYYYYY1>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A1))
+A2 = T.StringtoTree('1-3-4-5-6-7-10-12-14-YYYYYYYY2>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A2))
+A3 = T.StringtoTree('1-2-4-6-7-8-9-11-15-YYYYYYYY3>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A3))
+A4 = T.StringtoTree('1-2-3-7-8-10-12-13-16-YYYYYYYY4>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A4))
+A4 = T.StringtoTree('1-2-6-7-8-9-10-13-15-YYYYYYYY5>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A4))
+A5 = T.StringtoTree('1-2-6-7-8-9-10-13-15-YYYYYYYY5>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A5))
+A6 = T.StringtoTree('1-2-3-5-7-8-9-10-11-14-16-YYYYYYYY6>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A6))
+A7 = T.StringtoTree('2-3-4-5-6-8-10-11-12-13-15-YYYYYYYY7>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A7))
+A8 = T.StringtoTree('3-4-5-6-7-11-12-14-16-YYYYYYYY8>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A8))
+A9 = T.StringtoTree('1-3-5-6-10-11-12-13-14-YYYYYYYY9>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A9))
+A10 = T.StringtoTree('2-4-5-6-7-9-11-12-13-14-15-YYYYYYYY10>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A10))
+A11 = T.StringtoTree('1-3-6-7-8-9-10-12-14-15-16-YYYYYYYY11>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A11))
+A12 = T.StringtoTree('2-4-7-8-9-10-11-15-16-YYYYYYYY12>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A12))
+A13 = T.StringtoTree('1-4-5-7-9-10-14-15-16-YYYYYYYY13>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A13))
+A14 = T.StringtoTree('2-6-8-9-10-11-13-15-16-YYYYYYYY14>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A14))
+A15 = T.StringtoTree('3-5-7-10-11-12-13-14-16-YYYYYYYY15>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A15))
+A16 = T.StringtoTree('1-4-6-8-11-12-13-14-15-YYYYYYYY16>', letrasProposicionales)
+print ("Formula: ", T.Inorder(A16))
 
-lista_hojas = [[A]] # Inicializa la lista de hojas
+lista_hojas = [[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16]] # Inicializa la lista de hojas
 
 OK = ('') # El tableau regresa Satisfacible o Insatisfacible
 interpretaciones = [] # lista de lista de literales que hacen verdadera lista_hojas

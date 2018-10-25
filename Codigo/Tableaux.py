@@ -51,19 +51,18 @@ def StringtoTree(A, letrasProposicionales):
     # Output: formula como tree
     conectivos = ['O', 'Y', '>','-']
     cadena=[]
-    word=""
     cont=0
-    for j in A:
-        if j!=" " and j not in conectivos:
-                word=word+j
-        if j==" " or cont==len(A)-1:
-            cadena.append(word)
-            word=""
-        if j in conectivos:
-            cadena.append(word)
-            cadena.append(j)
-            word=""
-        cont=cont+1
+    while cont < len(A):
+        if A[cont] in conectivos:
+                cadena.append(A[cont])
+                cont+=1
+	else:
+		cadena.append(A[cont]+A[cont+1])
+		cont+=2
+	#print cont
+        #print cadena
+    conectivos = ['O', 'Y', '>']    
+    print cadena
     pila = []
     for c in cadena:
         if c in letrasProposicionales:
@@ -73,6 +72,8 @@ def StringtoTree(A, letrasProposicionales):
             del pila[-1]
             pila.append(formulaAux)
         elif c in conectivos:
+            #print cadena
+            #print c
             formulaAux = Tree(c, pila[-1], pila[-2])
             del pila[-1]
             del pila[-1]
@@ -112,12 +113,13 @@ def obtiene_literales(cadena, letrasProposicionales):
 	contador = 0
 	while contador < len(cadena):
 		if cadena[contador] == '-':
-			l = cadena[contador] + cadena[contador+1]
-			literales.append(l)
-			contador += 1
-		elif cadena[contador] in letrasProposicionales:
-			l = cadena[contador]
-			literales.append(l)
+			l = cadena[contador] + cadena[contador+1]+cadena[contador+2]
+                        contador+=2
+                        literales.append(l)
+		elif cadena[contador] =='0' or cadena[contador] =='1':
+                        l = cadena[contador]+cadena[contador+1]
+                        literales.append(l)
+                        contador+=1
 		contador += 1
 	return literales
 
@@ -147,7 +149,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		print u"Cantidad de hojas sin marcar: ", len(hojas_no_marcadas)
 		# Selecciona una hoja no marcada
 		hoja = choice(hojas_no_marcadas)
-		print "Trabajando con hoja: ", imprime_hoja(hoja)
+		#print "Trabajando con hoja: ", imprime_hoja(hoja)
 
 		# Busca formulas que no son literales
 		formulas_no_literales = []
@@ -166,7 +168,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 
 		if formulas_no_literales != []: # Verifica si hay formulas que no son literales
 			# Hay formulas que no son literales
-			print "Hay formulas que no son literales"
+			#print "Hay formulas que no son literales"
 			# Selecciona una formula no literal
 			f = choice(formulas_no_literales)
 			if f.label == 'Y':
@@ -241,11 +243,11 @@ def Tableaux(lista_hojas, letrasProposicionales):
 					lista_hojas.append(S2) # Agrega nueva hoja con no B2
 
 		else: # No hay formulas que no sean literales
-			# print "La hoja contiene solo literales!"
+			print "La hoja contiene solo literales!"
 			lista = list(imprime_hoja(hoja))
-			# print lista
+			print lista
 			literales = obtiene_literales(lista, letrasProposicionales)
-			# print literales
+			print literales
 			hojaConsistente = True
 			for l in literales: # Verificamos que no hayan pares complementarios en la hoja
 				if '-' not in l: # Verifica si el literal es positivo
@@ -292,6 +294,26 @@ def Tableaux(lista_hojas, letrasProposicionales):
 	else:
 		print(u"La lista de fórmulas dada es insatisfacible!")
 		return "Insatisfacible", None
+
+letrasProposicionales = []
+s=""
+for i in range(1, 17):
+        if i < 10:
+                s+="0"
+        letrasProposicionales.append(s+str(i))
+        s=""
+        
+#literal='15-14-13-11-10-09-07-05-04-03-02-01-08161206YYYYYYYYYYYYYYY'
+#A7 = StringtoTree(literal, letrasProposicionales)
+#print ("Formula: ", Inorder(A7))
+#A8 = StringtoTree('1011Y', letrasProposicionales)
+#print ("Formula: ", Inorder(A8))
+#A9 = StringtoTree('1011-Y', letrasProposicionales)
+#print ("Formula: ", Inorder(A9))
+#print Tableaux([[A7]], letrasProposicionales)
+#print Tableaux([[A8]], letrasProposicionales)
+#print Tableaux([[A9]], letrasProposicionales)
+
 
 ##############################################################################
 # Fin definicion de objeto tree y funciones

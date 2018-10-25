@@ -62,7 +62,7 @@ def StringtoTree(A, letrasProposicionales):
 	#print cont
         #print cadena
     conectivos = ['O', 'Y', '>']    
-    print cadena
+    #print cadena
     pila = []
     for c in cadena:
         if c in letrasProposicionales:
@@ -136,7 +136,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 	# 		  - interpretaciones: lista de listas de literales que hacen verdadera
 	#			la lista_hojas
 
-	print "Trabajando con: ", imprime_tableau(lista_hojas)
+	#print "Trabajando con: ", imprime_tableau(lista_hojas)
 
 	marcas = ['x', 'o']
 	interpretaciones = [] # Lista para guardar interpretaciones que satisfacen la raiz

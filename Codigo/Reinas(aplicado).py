@@ -28,8 +28,10 @@ for i in range(1, 17):
 # Regla 1: Debe haber exactamente tres caballos
 conjunciones = '' # Para ir guardando las conjunciones de trios de disyunciones de literales
 inicial = True # Para inicializar la primera conjuncion
+CONT=0
 for p in letrasProposicionales:
-    print p
+    print (CONT*100/16)," % de letras creadas"
+    CONT+=1
     aux1 = [x for x in letrasProposicionales if x != p] # Todas las letras excepto
     #print "aux1: ", aux1
     for q in aux1:
@@ -52,28 +54,28 @@ for p in letrasProposicionales:
 #print "Conjunciones: ", conjunciones
 
 # Regla 2: Ninguna reina debe poder atacar a otra
-
-#conjunciones = '02-03-04-05-06-09-11-13-16-YYYYYYYY01>' + conjunciones + 'Y'
-#conjunciones = '01-03-04-05-06-07-10-12-14-YYYYYYYY02>' + conjunciones + 'Y'
-#conjunciones = '01-02-04-06-07-08-09-11-15-YYYYYYYY03>' + conjunciones + 'Y'
-#conjunciones = '01-02-03-07-08-10-12-13-16-YYYYYYYY04>' + conjunciones + 'Y'
-#conjunciones = '01-02-06-07-08-09-10-13-15-YYYYYYYY05>' + conjunciones + 'Y'
-#conjunciones = '01-02-03-05-07-08-09-10-11-14-16-YYYYYYYYYY06>' + conjunciones + 'Y'
-#conjunciones = '02-03-04-05-06-08-10-11-12-13-15-YYYYYYYYYY07>' + conjunciones + 'Y'
-#conjunciones = '03-04-05-06-07-11-12-14-16-YYYYYYYY08>' + conjunciones + 'Y'
-#conjunciones = '01-03-05-06-10-11-12-13-14-YYYYYYYY09>' + conjunciones + 'Y'
-#conjunciones = '02-04-05-06-07-09-11-12-13-14-15-YYYYYYYYYY10>' + conjunciones + 'Y'
-#conjunciones = '01-03-06-07-08-09-10-12-14-15-16-YYYYYYYYYY11>' + conjunciones + 'Y'
-#conjunciones = '02-04-07-08-09-10-11-15-16-YYYYYYYY12>' + conjunciones + 'Y'
-#conjunciones = '01-04-05-07-09-10-14-15-16-YYYYYYYY13>' + conjunciones + 'Y'
-#conjunciones = '02-06-08-09-10-11-13-15-16-YYYYYYYY14>' + conjunciones + 'Y'
-#conjunciones = '03-05-07-10-11-12-13-14-16-YYYYYYYY15>' + conjunciones + 'Y'
-#conjunciones = '01-04-06-08-11-12-13-14-15-YYYYYYYY16>' + conjunciones + 'Y'
-
+print "AGREGANDO REGLA 2"
+conjunciones = '02-03-04-05-06-09-11-13-16-YYYYYYYY01>' + conjunciones + 'Y'
+conjunciones = '01-03-04-05-06-07-10-12-14-YYYYYYYY02>' + conjunciones + 'Y'
+conjunciones = '01-02-04-06-07-08-09-11-15-YYYYYYYY03>' + conjunciones + 'Y'
+conjunciones = '01-02-03-07-08-10-12-13-16-YYYYYYYY04>' + conjunciones + 'Y'
+conjunciones = '01-02-06-07-08-09-10-13-15-YYYYYYYY05>' + conjunciones + 'Y'
+conjunciones = '01-02-03-05-07-08-09-10-11-14-16-YYYYYYYYYY06>' + conjunciones + 'Y'
+conjunciones = '02-03-04-05-06-08-10-11-12-13-15-YYYYYYYYYY07>' + conjunciones + 'Y'
+conjunciones = '03-04-05-06-07-11-12-14-16-YYYYYYYY08>' + conjunciones + 'Y'
+conjunciones = '01-03-05-06-10-11-12-13-14-YYYYYYYY09>' + conjunciones + 'Y'
+conjunciones = '02-04-05-06-07-09-11-12-13-14-15-YYYYYYYYYY10>' + conjunciones + 'Y'
+conjunciones = '01-03-06-07-08-09-10-12-14-15-16-YYYYYYYYYY11>' + conjunciones + 'Y'
+conjunciones = '02-04-07-08-09-10-11-15-16-YYYYYYYY12>' + conjunciones + 'Y'
+conjunciones = '01-04-05-07-09-10-14-15-16-YYYYYYYY13>' + conjunciones + 'Y'
+conjunciones = '02-06-08-09-10-11-13-15-16-YYYYYYYY14>' + conjunciones + 'Y'
+conjunciones = '03-05-07-10-11-12-13-14-16-YYYYYYYY15>' + conjunciones + 'Y'
+conjunciones = '01-04-06-08-11-12-13-14-15-YYYYYYYY16>' + conjunciones + 'Y'
+print "REGLA 2 AGREGADA"
 # Creo la formula como objeto
 
 A1 = T.StringtoTree(conjunciones, letrasProposicionales)
-print ("Formula: ", T.Inorder(A1))
+#print ("Formula: ", T.Inorder(A1))
 
 #A1 = T.StringtoTree('02-03-04-05-06-09-11-13-16-YYYYYYYY01>', letrasProposicionales)
 #print ("Formula: ", T.Inorder(A1))

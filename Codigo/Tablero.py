@@ -43,19 +43,15 @@ def poner_reina(n,board_size):
 def pos_reina(lista,board,n):  # Codigo Basico sin nada
     board_size=int(math.sqrt(len(lista)))
     square_size =width//board_size
-    # Direccion de la imagen para que funcione en cualquier computador
-    current_path = os.path.dirname('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
-    resource_path = os.path.join(current_path, 'Codigo')
-
-    #Reinas
-    reina=pygame.image.load(os.path.join(resource_path, "reina.png")).convert_alpha()
+       #Reinas
+    reina=pygame.image.load(os.path.join("reina.png")).convert_alpha()
     reina=pygame.transform.scale(reina,(square_size,square_size)) # Se escalan las imagenes para que queden centradas en sus cuadrados
     for reina1 in lista:
-         if '~' not in reina1:
+         if '-' not in reina1:
             board.blit(reina,poner_reina(int(reina1),board_size))
     pygame.display.update()
-    pygame.time.delay(100)
-    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
+    pygame.time.delay(800)
+    pygame.image.save(board, 'Respuesta/Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     return board
 
 def llenar(reina):
@@ -65,11 +61,8 @@ def llenar(reina):
 def pos_pos_reina(lista1,lista2,board,n):
     board_size=int(math.sqrt(len(lista2)))
     square_size =width//board_size
-    # Direccion de la imagen para que funcione en cualquier computador
-    current_path = os.path.dirname('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
-    resource_path = os.path.join(current_path, 'Codigo')
     for reina in lista1:
-        if '~' not in reina:
+        if '-' not in reina:
             llenar(int(reina))
     pygame.display.update()
     pygame.time.delay(100)
@@ -78,40 +71,28 @@ def pos_pos_reina(lista1,lista2,board,n):
     reina=pygame.image.load(os.path.join(resource_path, "reina.png")).convert_alpha()
     reina=pygame.transform.scale(reina,(square_size,square_size)) # Se escalan las imagenes para que queden centradas en sus cuadrados
     for reina1 in lista2:
-        if '~' not in reina1:
+        if '-' not in reina1:
             board.blit(reina,poner_reina(int(reina1),board_size))
     pygame.display.update()
     pygame.time.delay(100)
-    pygame.image.save(board, 'C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
+    pygame.image.save(board, "SOL/"'Tablero'+str(n)+'.png') #ADVERTENCIA : Aca va la direccion donde guardo el archivo "Proyecto-Logica\Codigo"
     return board
-   
 
-# Aca viene el juego
-
-pygame.init()
-Salir=False
-
-#lista1 = [1,2,3,~4,~5,~6,~7,~8,~9]
-#lista1 = ['1','2','3','~4','~5','~6','~7','~8','~9']
-#lista2 = ['1','~2','~3','4','5','~6','~7','~8','~9']
-
-#board = ChessBoard(lista1)
-#board = pos_reina(lista1,board,1)
-#board = pos_pos_reina(lista1,lista2,board,2)
-
-with open('C:/Users/Recup/source/repos/Proyecto-Logica/Codigo/Tableros.csv') as csv_file: #ADVERTENCIA : Aca va la direccion de Tableros.csv
-    data = csv.reader(csv_file, delimiter=',')
-    contador = 1
-    for l in data:
-        print(l,contador)
-        board = ChessBoard(l)
-        board = pos_reina(l,board,contador)
-        contador +=1
-csv_file.close()
-
-pygame.display.flip()
-while not Salir:
-    for event in pygame.event.get():
-        if event.type==pygame.QUIT:
-            pygame.quit()
-            Salir=True
+tablerovacio = ['-1','-2','-3','-4','-5','-6','-7','-8','-9','-10','-11','-12','-13','-14','-15','-16'] 
+def dibujar(listadelistas):
+    pygame.init()
+    Salir=False
+    contador=0
+    for i in listadelistas:
+        board = ChessBoard(i)
+        board = pos_reina(i,board,contador)
+        contador+=1
+        pygame.display.flip()
+    while not Salir:
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+                Salir=True
+#prueba=['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16']
+#lista=[prueba,prueba,prueba]
+#dibujar(lista)

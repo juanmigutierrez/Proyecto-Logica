@@ -25,15 +25,14 @@ def complemento(l):
 		return '-' + l
 
 def unit_propagate(Set,Int):
-    Set1 = Set
-    print(Set1)
-    print(Int)
+    print("set",Set)
+    print("int",Int)
 
     if len(Set)==0:
         return True,Int
 
     indice = 0
-    for clausula in Set1:
+    for clausula in Set:
             print(clausula)
             if(len(clausula) == 0):	# En este caso tiene una clausula vacia
                 return False,{}	
@@ -41,23 +40,30 @@ def unit_propagate(Set,Int):
             elif(len(clausula)==1):
                 comp = complemento(clausula[0]) # aca saca el complemento
                 Int_literal = interpetr(clausula[0])
+                clausula1=clausula[0]
                 Int[clausula[0]]= Int_literal
-                Set1.pop(indice)
+                Set.pop(indice)
+                lista_indice=[]
 
-                for clausula2 in Set: # Aca elemina el complemento
+                for clausula2 in Set:# Aca elemina el complemento  
+                    print("clausula2",clausula2)
                     indice2 = 0
                     for i in clausula2:
                         if i == comp:
                             clausula2.pop(indice2)
-                        indice2 = indice2 +1
+                        if i == clausula1:
+                            lista_indice.append(indice2)
+                            indice2 = indice2 +1
+                for i in lista_indice:
+                    Set.pop(i)
 
- 
-                unit_propagate(Set1,Int)   # Aca viene la recursion
+                return unit_propagate(Set,Int)   # Aca viene la recursion
 
-            elif(indice==len(Set)-2):
-                return Set,Int
-            else:
+            elif(len(clausula)!=1):
                 indice = indice +1
+                if (indice == len(Set)):
+                    return Set,Int
+
 
 
 
@@ -66,4 +72,6 @@ print(Conjunto,Interpretacion)
 
 
 def Despues_propagate(Set,Int):
+
+
 

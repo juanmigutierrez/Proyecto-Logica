@@ -15,5 +15,5 @@ ENTREGA FINAL:<br />
 - A Nosotros el tableux nos botó las soluciones
 - Utilizamos de ultima recursion hacer el codigo para la solucion de los caballos en un tablero 3x3, con el caso que usted ya tenia para mostrar que algoritmo DPLL funciona.
 - Codigos: 
-1)Caballo(aplicado) - DPLL.py 
-2)Reinas(aplicado) - DPLL.py
+--1)Caballo(aplicado) - DPLL.py 
+--2)Reinas(aplicado) - DPLL.py

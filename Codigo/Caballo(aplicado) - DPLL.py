@@ -487,3 +487,23 @@ Inter={}
 
 Conjunto, Interpretacion = DPLL(conjuntoClausulas,Inter)
 print("True : Satisfacible , False : Insatisfacible")
+
+if Conjunto == (True):
+    if len(INTS) == 0:
+        print (u"Error: la lista de interpretaciones está vacía")
+    else:
+        print ("Guardando interpretaciones en archivo...")
+        import csv
+        archivo = ('tableros_automatico.csv')
+        with open(archivo, 'w') as output:
+            writer = csv.writer(output, lineterminator='\n')
+            writer.writerows(INTS)
+
+        print ("Interpretaciones guardadas  en " + archivo)
+
+        import Tablero as V
+        print ("Dibujando su tablero: ")
+        V.dibujar(INTS)
+
+print ("FIN")
+

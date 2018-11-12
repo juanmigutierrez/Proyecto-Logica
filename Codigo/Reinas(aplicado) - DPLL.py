@@ -510,11 +510,11 @@ def DPLL(Set,Int):
 
 Inter={}
 
-Conjunto, Interpretacion = DPLL(conjuntoClausulas,Inter)
+Conjunto, INTS = DPLL(conjuntoClausulas,Inter)
 print("True : Satisfacible , False : Insatisfacible")
 
 
-if OK == ('Satisfacible'):
+if Conjunto == (True):
     if len(INTS) == 0:
         print (u"Error: la lista de interpretaciones está vacía")
     else:

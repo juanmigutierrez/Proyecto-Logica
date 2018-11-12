@@ -14,6 +14,6 @@ ENTREGA FINAL:<br />
 - Profesor corrimos el de las reinas y nos da un error de memoria de recursion(el computador estalla), ya que al utilizar los codigos de quitar negaciones el arbols es muy grande.
 - A Nosotros el tableux nos botó las soluciones
 - Utilizamos de ultima recursion hacer el codigo para la solucion de los caballos en un tablero 3x3, con el caso que usted ya tenia para mostrar que algoritmo DPLL funciona.
-- Codigos: 
---1)Caballo(aplicado) - DPLL.py 
+- Codigos: <br />
+--1)Caballo(aplicado) - DPLL.py <br />
 --2)Reinas(aplicado) - DPLL.py

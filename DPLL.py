@@ -1,5 +1,3 @@
-
-
 # Algoritmo DPLL
 
 
@@ -49,7 +47,6 @@ def unit_propagate(Set,Int):
                 lista_indice=[]
 
                 for clausula2 in Set:# Aca elemina el complemento  
-                    print("clausula2",clausula2)
                     indice2 = 0
                     for i in clausula2:
                         if i == comp:
@@ -79,13 +76,18 @@ def Despues_propagate(Set,Int):
         return Set,Int
 
 def DPLL_1(Set,Int):
+    inicial =''
     for clausula in Set:
         for i in clausula:
+            seleccion = 0
             indice = 0
             if i not in Int and len(Set)!=0:
+                seleccion = seleccion +1
                 comp = complemento(i) # aca saca el complemento
                 Int_literal = interpetr(i)
                 clausula1=i
+                if seleccion == 0:
+                    inicial = comp
                 if '-' not in clausula1:
                     Int[clausula1]= Int_literal
                 else:
@@ -95,7 +97,6 @@ def DPLL_1(Set,Int):
                 lista_indice=[]
 
                 for clausula2 in Set:# Aca elemina el complemento  
-                    print("clausula2",clausula2)
                     indice2 = 0
                     for i in clausula2:
                         if i == comp:
@@ -106,15 +107,57 @@ def DPLL_1(Set,Int):
                 for i in lista_indice:
                     Set.pop(i)
     if len(Set)==0:
-        return True,Int
+        return True,Int,seleccion
     else:
-        return Set,Int
+        return Set,Int,seleccion
+
+def DPLL_compl(Set,Int,i):
+                Set1 = Set.copy()
+                comp = complemento(i) # aca saca el complemento
+                Int_literal = interpetr(i)
+                clausula1=i
+                if '-' not in clausula1:
+                    Int[clausula1]= Int_literal
+                else:
+                    Int[comp]=Int_literal
+                Set1.pop(indice)
+                indice +=1
+                lista_indice=[]
+
+                for clausula2 in Set1:# Aca elemina el complemento  
+                    indice2 = 0
+                    for i in clausula2:
+                        if i == comp:
+                            clausula2.pop(indice2)
+                        if i == clausula1:
+                            lista_indice.append(indice2)
+                            indice2 = indice2 +1
+                for i in lista_indice:
+                    Set1.pop(i)
+                return Set1,Int
+
 
 def DPLL(Set,Int):
-    Conjunto,Interpretacion=Despues_propagate(Set,Int)
-    return DPLL_1(Set,Int)
+    Set1 = Set.copy()
+    Int1 = Int.copy()
+    Conjunto,Interpretacion=Despues_propagate(Set1,Int1)
+    Conjunto,Interpretacion,comp = DPLL_1(Conjunto,Interpretacion)
+    if Conjunto == True :
+        return True,Interpretacion
+    else:
+        Conjunto,Interpretacion = DPLL_compl(Set1,{},comp)
+        Conjunto,Interpretacion,comp = DPLL_1(Conjunto,Interpretacion)
+        if Conjunto == True:
+            return True,Interpretacion
+        else:
+            return False,Interpretacion
 
-DPLL(disyuncion,Inter)
 
+# TRUE : Satisfacible
+# FALSE : Insatisfacible
+
+Conjunto, Interpretacino = DPLL(disyuncion,Inter)
+print(Conjunto,Interpretacino)
+print("True : Satisfacible , False : Insatisfacible")
 
 

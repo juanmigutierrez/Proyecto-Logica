@@ -1,0 +1,16 @@
+
+
+
+>>>>>>IMPORTANTE:si ya ha instalado pip de python pasar al paso 3
+windows:
+1. abrir terminal en el directorio de python27/Scripts (por defecto "C:\Python27\Scripts")
+2.en la terminal C:\Python27\Scripts>pip install requests
+3. C:\Python27\Scripts>pip download pygame
+4. C:\Python27\Scripts>pip install pygame
+
+ubuntu:
+1.abrir terminal
+2.escribir: sudo apt install python-pip
+3.en la terminal: pip install pygame
+
+

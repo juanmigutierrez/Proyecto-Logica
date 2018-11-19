@@ -467,19 +467,22 @@ def DPLL(Set,Int):
     Set1 = Set.copy()
     Int1 = Int.copy()
     Conjunto,Interpretacion=Despues_propagate(Set1,Int1)
-    if Conjunto == True :
-        return True,Interpretacion
-    else:
-        Conjunto,Interpretacion,comp = DPLL_1(Conjunto,Interpretacion)
-        if Conjunto == True :
+    if Conjunto == True:
             return True,Interpretacion
-        else:
-            Conjunto,Interpretacion = DPLL_compl(Set1,{},comp)
+    else:
             Conjunto,Interpretacion,comp = DPLL_1(Conjunto,Interpretacion)
-            if Conjunto == True:
-                return True,Interpretacion
+            if Conjunto == True :
+                    return True,Interpretacion
             else:
-                return False,Interpretacion
+                    Conjunto,Interpretacion = DPLL_compl(Set1,{},comp)
+                    if Conjunto == True:
+                            return True,Interpretacion
+                    else:
+                         Conjunto,Interpretacion,comp = DPLL_1(Conjunto,Interpretacion)
+                         if Conjunto == True:
+                                 return True,Interpretacion
+                         else:
+                                 return False,Interpretacion
 
 
 # TRUE : Satisfacible

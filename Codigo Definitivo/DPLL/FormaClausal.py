@@ -177,15 +177,15 @@ def aplicaDistributiva(f):
     # Output: - True/False,
 	# 		  - tree
 	aux1 = Inorder(f)
-	print("Se analiza: ", aux1)
+	#print("Se analiza: ", aux1)
 	B = distributiva(f)
 	aux2 = Inorder(B)
-	print("Se obtuvo : ", aux2)
+	#print("Se obtuvo : ", aux2)
 	if  aux1 != aux2:
-		print(u"Hubo distribuciÃ³n")
+		#print(u"Hubo distribuciÃ³n")
 		return True, B
 	else:
-		print(u"No hubo distribuciÃ³n")
+		#print(u"No hubo distribuciÃ³n")
 		return False, f
 
 def eliminaConjunciones(f):
@@ -194,23 +194,23 @@ def eliminaConjunciones(f):
     # Output: lista de cadenas
 	if f.right == None:
 		a = [Inorder(f)]
-		print("Clausula unitaria positiva, ", a)
+		#print("Clausula unitaria positiva, ", a)
 		return a
 	elif f.label == 'O':
 		return [Inorder(f)]
 	elif f.label == 'Y':
-		print(u"Dividiendo los lados de la conjunción")
+		#print(u"Dividiendo los lados de la conjunción")
 		a = eliminaConjunciones(f.left)
-		print("a, ", a)
+		#print("a, ", a)
 		b = eliminaConjunciones(f.right)
-		print("b, ", b)
+		#print("b, ", b)
 		c = a + b
-		print("c, ", c)
+		#print("c, ", c)
 		return a + b
 	else:
 		if f.label == '-':
 			if f.right.right == None:
-				print("Clausula unitaria negativa")
+				#print("Clausula unitaria negativa",[Inorder(f)])
 				return [Inorder(f)]
 			else:
 				print("Oh, Oh, la formula no estaba en CNF!")
@@ -230,7 +230,7 @@ def formaClausal(f):
 
 	# Primero elimino las conjunciones, obteniendo
 	# una lista de disyunciones de literales
-	print (Inorder(f))
+	#print (Inorder(f))
 	print("Encontrando lista de disyunciones de literales...")
 	aux = eliminaConjunciones(f)
 	badChars = ['(', ')']
@@ -275,11 +275,11 @@ def pasaraclaus(A):
         OK = True
         while OK:
                 aux1 = Inorder(A)
-                print("Se analiza: ", aux1)
+                #print("Se analiza: ", aux1)
                 B = deMorgan(A)
                 B = quitarDobleNegacion(B)
                 aux2 = Inorder(B)
-                print("Se obtuvo : ", aux2)
+                #print("Se obtuvo : ", aux2)
                 if  aux1 != aux2:
                         print(u"Se aplicó deMorgan")
                         OK = True
@@ -294,15 +294,15 @@ def pasaraclaus(A):
         conjuntoClausulas = formaClausal(A)
         return conjuntoClausulas
 
-s=""
-letrasProposicionales = []
-for i in range(1, 17):
-        if i < 10:
-                s+="0"
-        letrasProposicionales.append(s+str(i))
-        s=""
+#s=""
+#letrasProposicionales = []
+#for i in range(1, 17):
+#        if i < 10:
+#                s+="0"
+#        letrasProposicionales.append(s+str(i))
+#        s=""
 
-z='0203-04-05-06-0911-13-16-01-07-0812-14-1510-YYYYYYYYYYYYYYY'
-A = StringtoTree(z, letrasProposicionales) #Prueba muy corta para comprobar
-print ("Formula: ", Inorder(A))
-print (pasaraclaus(A))
+#z='0203-04-05-06-0911-13-16-01-07-0812-14-1510-YYYYYYYYYYYYYYY'
+#A = StringtoTree(z, letrasProposicionales) #Prueba muy corta para comprobar
+#print ("Formula: ", Inorder(A))
+#print (pasaraclaus(A))

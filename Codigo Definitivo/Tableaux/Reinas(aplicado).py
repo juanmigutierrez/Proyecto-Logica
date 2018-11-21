@@ -27,6 +27,7 @@ inicial = True # Para inicializar la primera conjuncion
 CONT=0
 print "Agregando regla 1 (Solo 4 Reinas Por Tablero)"
 for p in letrasProposicionales:
+    break
     print (CONT*100/16),"% De Regla 1 Creado"
     CONT+=1
     aux1 = [x for x in letrasProposicionales if x != p] # Todas las letras excepto p
@@ -74,15 +75,14 @@ print "Creando Formula Para Iniciar En Tableaux"
 print "Formula Demasiado Larga Puede Tardar Unos Segundos"
 # Creo la formula como objeto
 
-A1 = T.StringtoTree(conjunciones, letrasProposicionales)
+#A1 = T.StringtoTree(conjunciones, letrasProposicionales)
 #print ("Formula: ", T.Inorder(A1))(OJO NO SE PUEDE IMPRIMIR FORMULA DEMASIADO GRANDE,ERROR DE MEMORIA PARA RECURSION)
 print "Iniciaremos El Tableaux"
 
-#Prueba = T.StringtoTree('0203-04-05-06-0911-13-16-01-07-0812-14-1510-YYYYYYYYYYYYYYY', letrasProposicionales) #Prueba muy corta para comprobar
+A1 = T.StringtoTree('0203-04-05-06-0911-13-16-01-07-0812-14-1510-YYYYYYYYYYYYYYY', letrasProposicionales) #Prueba muy corta para comprobar
 #print ("Formula: ", T.Inorder(Prueba))
 
 lista_hojas = [[A1]] # Inicializa la lista de hojas
-#lista_hojas = [[Prueba]] # Inicializa la lista de hojas
 
 OK = ('') # El tableau regresa Satisfacible o Insatisfacible
 interpretaciones = [] # lista de lista de literales que hacen verdadera lista_hojas

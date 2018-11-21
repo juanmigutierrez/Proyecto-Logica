@@ -182,10 +182,10 @@ def aplicaDistributiva(f):
 	aux2 = Inorder(B)
 	#print("Se obtuvo : ", aux2)
 	if  aux1 != aux2:
-		#print(u"Hubo distribuciÃ³n")
+		print(u"Hubo distribuciÃ³n")
 		return True, B
 	else:
-		#print(u"No hubo distribuciÃ³n")
+		print(u"No hubo distribuciÃ³n")
 		return False, f
 
 def eliminaConjunciones(f):

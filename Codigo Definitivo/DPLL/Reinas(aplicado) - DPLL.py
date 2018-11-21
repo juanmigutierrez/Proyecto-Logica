@@ -71,7 +71,7 @@ conjunciones = '03-05-07-10-11-12-13-14-16-YYYYYYYY15>' + conjunciones + 'Y'
 conjunciones = '01-04-06-08-11-12-13-14-15-YYYYYYYY16>' + conjunciones + 'Y'
 print( "Regla 1 Y 2 Juntas Como Una Sola Formula")
 
-print ("Creando Formula Para Iniciar En Tableaux")
+print ("Creando Formula Para Iniciar DPLL")
 print ("Formula Demasiado Larga Puede Tardar Unos Segundos")
 # Creo la formula como objeto
 
@@ -81,7 +81,7 @@ print ("Iniciaremos DPPL ")
 
 A = FORM.StringtoTree('0203-04-05-06-0911-13-16-01-07-0812-14-1510-YYYYYYYYYYYYYYY', letrasProposicionales) #Prueba muy corta para comprobar
 
-#A = StringtoTree(conjunciones, letrasProposicionales)
+#A = FORM.StringtoTree(conjunciones, letrasProposicionales)
 
 A = FORM.quitarDobleNegacion(A)
 
@@ -264,13 +264,18 @@ def DPLL(Set,Int):
 
 
 Inter={}
-
+lista=[]
 Conjunto, INTS = DPLL(conjuntoClausulas,Inter)
 print("True : Satisfacible , False : Insatisfacible")
 
 print("-------",INTS)
+for i in INTS:
+        if INTS[i]:
+                lista.append(i)
+        else:
+                lista.append("-"+i)
 if Conjunto == (True):
-    if len(INTS) == 0:
+    if len(lista) == 0:
         print (u"Error: la lista de interpretaciones está vacía")
     else:
         print ("Guardando interpretaciones en archivo...")
@@ -278,13 +283,13 @@ if Conjunto == (True):
         archivo = ('tableros_automatico.csv')
         with open(archivo, 'w') as output:
             writer = csv.writer(output, lineterminator='\n')
-            writer.writerows(INTS)
+            writer.writerows([lista])
 
         print ("Interpretaciones guardadas  en " + archivo)
 
         import Tablero as V
         print ("Dibujando su tablero: ")
-        V.dibujar(INTS)
+        V.dibujar([lista])
 
 print ("FIN")
 
